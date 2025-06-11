@@ -4,9 +4,74 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrafficSimulator.UI"
+        xmlns:viewmodels="clr-namespace:TrafficSimulator.UI.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Traffic Simulator" Height="768" Width="1024"
+        Background="White">
 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Barra de herramientas superior -->
+        <Border Grid.Row="0" Padding="8" BorderBrush="Gray" BorderThickness="0,0,0,1">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnNew" Margin="4" ToolTip="Nuevo grafo" Content="Nuevo"/>
+                <Button x:Name="btnOpen" Margin="4" ToolTip="Abrir grafo" Content="Abrir"/>
+                <Button x:Name="btnSave" Margin="4" ToolTip="Guardar grafo" Content="Guardar"/>
+                <Separator Margin="8,0" />
+                <ToggleButton x:Name="tglAddCity" Margin="4" ToolTip="Agregar ciudad" Content="Ciudad"/>
+                <ToggleButton x:Name="tglAddRoad" Margin="4" ToolTip="Agregar carretera" Content="Carretera"/>
+                <ToggleButton x:Name="tglSelect" Margin="4" ToolTip="Seleccionar" Content="Seleccionar" IsChecked="True"/>
+                <Separator Margin="8,0" />
+                <Button x:Name="btnStartSimulation" Margin="4" ToolTip="Iniciar simulación" Content="Iniciar"/>
+                <Button x:Name="btnPauseSimulation" Margin="4" ToolTip="Pausar simulación" Content="Pausar" IsEnabled="False"/>
+                <Button x:Name="btnStopSimulation" Margin="4" ToolTip="Detener simulación" Content="Detener" IsEnabled="False"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Contenido principal: Editor de grafos y propiedades -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Canvas del editor de grafos -->
+            <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1">
+                <ContentControl x:Name="graphEditorContainer" />
+            </Border>
+
+            <!-- Panel de propiedades -->
+            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Margin="4">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ContentControl x:Name="propertiesPanelContainer" />
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <!-- Barra de estado -->
+        <Border Grid.Row="2" Padding="8" BorderBrush="Gray" BorderThickness="0,1,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="txtStatus" Grid.Column="0" Text="Listo" VerticalAlignment="Center"/>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Text="Ciudades: " VerticalAlignment="Center"/>
+                    <TextBlock x:Name="txtCityCount" Text="0" VerticalAlignment="Center" Margin="2,0,8,0"/>
+                    <TextBlock Text="Carreteras: " VerticalAlignment="Center"/>
+                    <TextBlock x:Name="txtRoadCount" Text="0" VerticalAlignment="Center" Margin="2,0,8,0"/>
+                    <TextBlock Text="Vehículos: " VerticalAlignment="Center"/>
+                    <TextBlock x:Name="txtVehicleCount" Text="0" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

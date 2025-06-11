@@ -11,7 +11,6 @@
   <ItemGroup>
     <PackageReference Include="BingMapsRESTToolkit" Version="1.1.4" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="MaterialDesignColors" Version="5.2.1" />
     <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
     <PackageReference Include="QuikGraph" Version="2.5.0" />
   </ItemGroup>
@@ -23,8 +22,6 @@
   <ItemGroup>
     <Folder Include="Converters\" />
     <Folder Include="Resources\" />
-    <Folder Include="Controls\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
   </ItemGroup>
 
